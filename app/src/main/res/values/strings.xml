@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CodeMorse</string>
+    <string name="ecrire_ici">Ecrire ici :</string>
+    <string name="code_morse">Code Morse :</string>
+</resources>
