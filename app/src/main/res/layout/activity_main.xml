@@ -6,124 +6,176 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/edit2"
-        android:layout_width="397dp"
-        android:layout_height="46dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/code_morse"
-        app:layout_constraintBottom_toTopOf="@+id/horizontal2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit1" />
-
-    <EditText
-        android:id="@+id/edit1"
-        android:layout_width="397dp"
-        android:layout_height="46dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/ecrire_ici"
-        app:layout_constraintBottom_toTopOf="@+id/edit2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <LinearLayout
-        android:id="@+id/horizontal1"
-        android:layout_width="385dp"
-        android:layout_height="739dp"
-        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="508dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizontal2">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-        <Button
-            android:id="@+id/button8"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="EFFACER" />
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/button9"
-            android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/cAlpha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Alpha" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Espace" />
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/cMorse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Morse"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/horizontal1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/bEffacer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="Effacer"
+                android:text="@string/effacer" />
+
+            <Button
+                android:id="@+id/bEspace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="espace"
+                android:text="@string/espace" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/front"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:text="@string/front_end"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/back"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.375" />
+
+            <TextView
+                android:id="@+id/back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:text="@string/back_end"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.375" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteY="296dp">
+
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/horizontal2"
-        android:layout_width="407dp"
-        android:layout_height="match_parent"
-        android:layout_marginTop="92dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.371">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/bPoint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="."
-            tools:layout_editor_absoluteX="199dp"
-            tools:layout_editor_absoluteY="124dp" />
+            android:onClick="point"
+            android:text="@string/But1" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/bMoins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="-"
-            tools:layout_editor_absoluteX="92dp"
-            tools:layout_editor_absoluteY="124dp" />
+            android:onClick="moins"
+            android:text="@string/But2" />
+
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/bSlach"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="/"
-            tools:layout_editor_absoluteX="199dp"
-            tools:layout_editor_absoluteY="190dp" />
+            android:onClick="slach"
+            android:text="@string/But3" />
+
 
         <Button
-            android:id="@+id/button7"
+            android:id="@+id/bJouer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Jouer"
-            tools:layout_editor_absoluteX="199dp"
-            tools:layout_editor_absoluteY="255dp" />
+            android:onClick="jouer"
+            android:text="@string/jouer" />
+
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/back"
-        android:layout_width="193dp"
-        android:layout_height="22dp"
-        android:text=" Back-end: Marcos"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="186dp" />
-
-    <TextView
-        android:id="@+id/interface"
-        android:layout_width="191dp"
-        android:layout_height="22dp"
-        android:text="Interface : Nidhal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/back"
-        tools:layout_editor_absoluteY="186dp" />
-
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="384dp"
-        android:layout_height="303dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

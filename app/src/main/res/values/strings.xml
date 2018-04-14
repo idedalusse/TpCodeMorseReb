@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">CodeMorse</string>
-    <string name="ecrire_ici">Ecrire ici :</string>
-    <string name="code_morse">Code Morse :</string>
+    <string name="ecrireIci">Ecrire_ici:</string>
+    <string name="espace">Espace</string>
+    <string name="back_end">Back-end: Marcos</string>
+    <string name="front_end">Front-end: Nidhal</string>
+    <string name="morse">Morse:</string>
+    <string name="But1">.</string>
+    <string name="But2">-</string>
+    <string name="But3">/</string>
+    <string name="jouer">JOUER</string>
+    <string name="effacer">EFFACER</string>
 </resources>
