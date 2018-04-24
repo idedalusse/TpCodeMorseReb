@@ -10,4 +10,12 @@
     <string name="But3">/</string>
     <string name="jouer">JOUER</string>
     <string name="effacer">EFFACER</string>
+    <string name="textview">TextView</string>
+    <string name="textview1">TextView</string>
+    <string name="textviewsortie">textviewSortie</string>
+    <string name="textviewentrer">textviewEntrer</string>
+    <string name="textviewsort">textViewSortie</string>
+    <string name="textviewentr">textViewEntrer</string>
+    <string name="alpha">Alpha</string>
+    <string name="mors">Morse</string>
 </resources>

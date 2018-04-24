@@ -1,16 +1,20 @@
 package com.example.bensnedalus.codemorse;
 
+import android.content.Context;
+import android.graphics.Camera;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.AlphabetIndexer;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
 
+public class MainActivity extends AppCompatActivity
+{
 
     //************** Déclarations des variables **************//
     EditText alpha;
@@ -19,79 +23,134 @@ public class MainActivity extends AppCompatActivity {
     String monAlphaText  = "";
     String monMorseText  = "";
 
+    TraducteurMorse morseObj = new Morse();
+    boolean semaphore=true;
 
     //**********************************
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         //*********************************
         alpha = findViewById(R.id.cAlpha);
         morse = findViewById(R.id.cMorse);
+
+        closeKeyboard();
+        TextView back = findViewById(R.id.front);
+        back.setText("Front Back-end: " + morseObj.getNomProgrammeurs());
+
         //*********************************
 
-        morse.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable editable) {
-
-                       // System.out.println("hello");
-
-                        if (editable.length() == 0)
-                        {
-                            morse.setText(alpha.getText());// on montre en meme temps que l'on crris
-                        }
-
-                    }
-                }
-        );
-        //**********************************
-
+        //******************* pour faire disparaitre le clavier *****************//
     }
 
-    /*public void ecrirIci (View n){
+    private void closeKeyboard()
+    {
+        View view = this.getCurrentFocus();
+        if (view != null)
+        {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
 
-        alpha = (alpha.getText().toString())
 
-    }*/
+        //*************** Pour changer textView dans morse ******************//
+
+        morse.addTextChangedListener(new TextWatcher()
+        {
 
 
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable)
+            {
+
+
+                TextView textViewSorti = (TextView) findViewById(R.id.sortieTexte);
+                textViewSorti.setText(morseObj.toAlpha(editable.toString()));
+                TextView textViewEntre = (TextView) findViewById(R.id.entrerTexte);
+                textViewEntre.setText(morseObj.nettoyerAlpha(editable.toString()));
+
+
+            }
+        });
+
+        //*************** Pour changer textView dans alpha ******************//
+
+
+        alpha.addTextChangedListener(new TextWatcher()
+        {
+
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
+            {
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable)
+            {
+
+
+                TextView textViewSorti = (TextView) findViewById(R.id.sortieTexte);
+                textViewSorti.setText(morseObj.toMorse(editable.toString()));
+                TextView textViewEntre = (TextView) findViewById(R.id.entrerTexte);
+                textViewEntre.setText(morseObj.nettoyerAlpha(editable.toString()));
+
+
+            }
+        });
+
+        //**********************************************************************//
+
+    }
 
     public void maMethode(View view)
     {
         System.out.println(((Button)view).getText());
     }
+    //************* Boutton pour le point **************//
 
     public  void point(View p)
     {
        Button po = (Button) p;
        po.setText(".");
         monMorseText = monMorseText+".";
-        //monAlphaText = monAlphaText+".";
         morse.setText(monMorseText);
-       // alpha.setText(monAlphaText);
-        //System.out.println(((Button)p).getText());
+
     }
+    //************* Boutton pour le moins **************//
 
     public void moins(View v)
     {
         Button b =  (Button) v;
         b.setText("-");
         monMorseText = monMorseText+"-";
-        //alpha.setText("-");
         morse.setText(monMorseText);
-       // System.out.println(((Button)v).getText());
+
     }
+    //************* Boutton pour le slash **************//
 
     public  void slach(View s)
     {
@@ -99,47 +158,35 @@ public class MainActivity extends AppCompatActivity {
         sl.setText("/");
         monMorseText = monMorseText+"/";
         morse.setText(monMorseText);
-       // morse.setText("/");
-       // ajouterAlpha += ajouterAlpha + "/";
-        // System.out.println(((Button)s).getText());
+
     }
+//************* Boutton Jouer NON operationelle ***********//
 
     public  void jouer(View j)
     {
         Button jo = (Button) j;
         jo.setText("jouer");
-        //System.out.println(((Button)j).getText());
 
     }
+    //******** Boutton Jouer NON operationelle **********//
 
     public  void Effacer(View efa)
     {
-        Button ef = (Button) efa;
-        ef.clearComposingText();
-
-        //alpha.setText("");
-       // morse.setText("");
-        monMorseText = "";
         monAlphaText = "";
-        // cursseur focus
-        morse.setSelection(morse.length()-1);
-        morse.requestFocus();
+        monMorseText = "";
+        morse.setText(monAlphaText);
+        alpha.setText(monMorseText);
 
-        //alpha.setText(monAlphaText);
-        // morse.getText().clear();
-        // System.out.println(((Button)efa).getText());
     }
+    //************* Boutton Espace **************//
 
     public  void espace(View e)
     {
-        //Button es = (Button) e;
-        //es.setText(" ");
-        //alpha.setText(" ");
-        //morse.setText(" ");
+
         monMorseText += " ";
         morse.setText(monMorseText);
 
-        //System.out.println(((Button)e).getText());
-
     }
+
+
 }
